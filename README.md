@@ -1,1 +1,1 @@
-# argocd-menifest
+# argocd-manifest
