@@ -17,7 +17,7 @@ spec:
     spec:
       initContainers:
       - name: init-mysql
-        image: mysql:5.7
+        image: mysql:8.0.32
         command:
         - bash
         - "-c"
@@ -31,6 +31,7 @@ spec:
           echo server-id=$((100 + $ordinal)) >> /mnt/conf.d/server-id.cnf
           # Copy appropriate conf.d files from config-map to emptyDir.
           if [[ $ordinal -eq 0 ]]; then
+            
             cp /mnt/config-map/primary.cnf /mnt/conf.d/
           else
             cp /mnt/config-map/replica.cnf /mnt/conf.d/
@@ -65,7 +66,7 @@ spec:
           mountPath: /etc/mysql/conf.d
       containers:
       - name: mysql
-        image: mysql:5.7
+        image: mysql:8.0.32
         env:
         - name: MYSQL_ALLOW_EMPTY_PASSWORD
           value: "1"

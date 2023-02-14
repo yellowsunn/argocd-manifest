@@ -9,8 +9,12 @@ data:
   primary.cnf: |
     # Apply this config only on the primary.
     [mysqld]
-    log-bin    
+    log-bin
+    max_binlog_size=512M
+    expire_logs_days=7
   replica.cnf: |
     # Apply this config only on replicas.
     [mysqld]
     super-read-only
+    max_binlog_size=512M
+    expire_logs_days=7
