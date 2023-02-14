@@ -136,9 +136,6 @@ spec:
                           MASTER_CONNECT_RETRY=10; \
                         START SLAVE;" || exit 1
 
-            # create default database
-            mysql -h 127.0.0.1 -e "create database shop_db;" 
-
             # In case of container restart, attempt this at-most-once.
             mv change_master_to.sql.in change_master_to.sql.orig
           fi
