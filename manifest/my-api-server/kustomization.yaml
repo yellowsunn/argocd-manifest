@@ -5,4 +5,4 @@ resources:
 - service.yaml
 images:
 - name: yellowsunn/my-api-server
-  newTag: "20230225050400"
+  newTag: "20230225070629"
