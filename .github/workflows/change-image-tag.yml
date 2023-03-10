@@ -9,4 +9,7 @@ jobs:
     steps:
       - name: Print Payload
         run: |
-          echo ${{ github.event.client_payload.test }}
+          echo ${{ github.event.client_payload.requested-event-path }}
+          echo ${{ github.event.client_payload.container-image }}
+          echo ${{ github.event.client_payload.deployment-version }}
+          echo ${{ github.event.client_payload.overlay-path }}
