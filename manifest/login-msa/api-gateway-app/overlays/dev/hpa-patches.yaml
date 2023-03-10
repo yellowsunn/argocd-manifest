@@ -1,0 +1,7 @@
+apiVersion: autoscaling/v1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: login-msa-api-gateway-app-hpa
+spec:
+  maxReplicas: 2
+  minReplicas: 1
