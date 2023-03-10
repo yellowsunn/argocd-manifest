@@ -9,6 +9,9 @@ spec:
       containers:
       - name: login-msa-user-app
         resources:
+          requests:
+            cpu: 5m
+            memory: 150Mi
           limits:
             cpu: 300m
             memory: 512Mi
