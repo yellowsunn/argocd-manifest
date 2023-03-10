@@ -4,6 +4,7 @@ metadata:
   name: login-msa-user-app-deploy
 
 spec:
+  replicas: 2
   template:
     spec:
       containers:
