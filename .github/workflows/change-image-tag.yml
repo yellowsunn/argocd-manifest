@@ -17,6 +17,10 @@ jobs:
           echo "overlay-path=${{ github.event.client_payload.overlay-path }}" >> $GITHUB_ENV
       - name: Setup Kustomize
         uses: imranismail/setup-kustomize@v2
+      - name: Set git config
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
       - name: Change imag tag
         run: |
           cd ${{ env.overlay-path }}
@@ -24,4 +28,3 @@ jobs:
           git add .
           git commit -m "[github-action] update image tag = ${{ env.container-image }}:${{ env.deployment-version }}"
           git push
-        
