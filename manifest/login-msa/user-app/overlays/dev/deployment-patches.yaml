@@ -10,5 +10,5 @@ spec:
       - name: login-msa-user-app
         resources:
           limits:
-            cpu: 100m
+            cpu: 300m
             memory: 512Mi
