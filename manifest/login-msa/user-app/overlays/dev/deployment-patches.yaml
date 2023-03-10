@@ -1,0 +1,17 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: login-msa-user-app-deploy
+
+spec:
+  template:
+    spec:
+      containers:
+      - name: login-msa-user-app
+        resources:
+          requests:
+            cpu: 100m
+            memory: 64Mi
+          limits:
+            cpu: 200m
+            memory: 128Mi

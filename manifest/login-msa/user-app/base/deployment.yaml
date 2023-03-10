@@ -1,0 +1,18 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: login-msa-user-app-deploy
+spec:
+  revisionHistoryLimit: 5
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 50%
+      maxUnavailable: 50%
+  template:
+    spec:
+      containers:
+      - name: login-msa-user-app
+        image: yellowsunn/login-msa-user-app
+        ports:
+        - containerPort: 8080
