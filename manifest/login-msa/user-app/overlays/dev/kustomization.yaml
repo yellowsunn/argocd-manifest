@@ -3,7 +3,7 @@ kind: Kustomization
 namePrefix: dev-
 bases:
 - ../../base
-patches:
+patchesStrategicMerge:
 - ./deployment-patches.yaml
 - ./hpa-patches.yaml
 
