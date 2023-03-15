@@ -1,0 +1,10 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-cloud-config-server-deploy
+
+spec:
+  template:
+    spec:
+      containers:
+      - name: my-cloud-config-server

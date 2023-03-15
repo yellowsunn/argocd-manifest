@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-cloud-config-server-deploy
+spec:
+  revisionHistoryLimit: 5
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+  template:
+    spec:
+      containers:
+      - name: my-cloud-config-server
+        image: yellowsunn/my-cloud-config-server
+        ports:
+        - containerPort: 8080
+        livenessProbe: 
+          httpGet:
+            path: /actuator/health
+            port: 8080
+            scheme: HTTP
+        readinessProbe: 
+          httpGet:
+            path: /actuator/health
+            port: 8080
+            scheme: HTTP

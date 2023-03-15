@@ -1,0 +1,12 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namePrefix: dev-
+patchesStrategicMerge:
+- ./deployment-patches.yaml
+- ./hpa-patches.yaml
+
+images:
+- name: yellowsunn/my-cloud-config-server
+  newTag: SNAPSHOT-20230315160256
+resources:
+- ../../base
