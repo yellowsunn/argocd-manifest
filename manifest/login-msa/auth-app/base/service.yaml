@@ -5,6 +5,7 @@ metadata:
 spec:
   ports:
   - name: aplication-port
+    port: 8080
     targetPort: 8080
   selector:
     app: login-msa-auth-app
