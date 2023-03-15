@@ -1,0 +1,10 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: login-msa-auth-app-deploy
+
+spec:
+  template:
+    spec:
+      containers:
+      - name: login-msa-auth-app

@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: login-msa-auth-app-deploy
+spec:
+  revisionHistoryLimit: 5
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+  template:
+    spec:
+      containers:
+      - name: login-msa-auth-app
+        image: yellowsunn/login-msa-auth-app
+        ports:
+        - containerPort: 8080
+        livenessProbe: 
+          httpGet:
+            path: /actuator/health/liveness
+            port: 8080
+            scheme: HTTP
+          timeoutSeconds: 10
+        readinessProbe: 
+          httpGet:
+            path: /actuator/health/readiness
+            port: 8080
+            scheme: HTTP
+          timeoutSeconds: 10

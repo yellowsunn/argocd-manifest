@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: login-msa-auth-app-svc
+spec:
+  ports:
+  - name: aplication-port
+    targetPort: 8080
+  selector:
+    app: login-msa-auth-app
+  type: LoadBalancer
