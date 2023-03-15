@@ -1,0 +1,10 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: login-msa-vuejs-app-deploy
+
+spec:
+  template:
+    spec:
+      containers:
+      - name: login-msa-vuejs-app

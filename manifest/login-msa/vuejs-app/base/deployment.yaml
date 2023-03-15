@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: login-msa-vuejs-app-deploy
+spec:
+  revisionHistoryLimit: 5
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+  template:
+    spec:
+      containers:
+      - name: login-msa-vuejs-app
+        image: yellowsunn/login-msa-vuejs-app
+        ports:
+        - containerPort: 80
+        livenessProbe: 
+          httpGet:
+            path: /health
+            port: 80
+            scheme: HTTP
+          timeoutSeconds: 1
+        readinessProbe: 
+          httpGet:
+            path: /health
+            port: 80
+            scheme: HTTP
+          timeoutSeconds: 1
