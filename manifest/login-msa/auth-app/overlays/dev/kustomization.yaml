@@ -7,6 +7,6 @@ patchesStrategicMerge:
 
 images:
 - name: yellowsunn/login-msa-auth-app
-  newTag: SNAPSHOT-20230315201802
+  newTag: SNAPSHOT-20230315205222
 resources:
 - ../../base
