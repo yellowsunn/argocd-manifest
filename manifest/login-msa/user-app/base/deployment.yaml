@@ -16,3 +16,15 @@ spec:
         image: yellowsunn/login-msa-user-app
         ports:
         - containerPort: 8080
+        livenessProbe: 
+          httpGet:
+            path: /actuator/health/liveness
+            port: 8080
+            scheme: HTTP
+          timeoutSeconds: 10
+        readinessProbe: 
+          httpGet:
+            path: /actuator/health/readiness
+            port: 8080
+            scheme: HTTP
+          timeoutSeconds: 10
