@@ -7,6 +7,6 @@ patchesStrategicMerge:
 
 images:
 - name: yellowsunn/my-cloud-config-server
-  newTag: SNAPSHOT-20230315160256
+  newTag: SNAPSHOT-20230315183421
 resources:
 - ../../base
