@@ -18,13 +18,13 @@ spec:
         - containerPort: 8080
         livenessProbe: 
           httpGet:
-            path: /actuator/health
+            path: /actuator/health/liveness
             port: 8080
             scheme: HTTP
           timeoutSeconds: 30
         readinessProbe: 
           httpGet:
-            path: /actuator/health
+            path: /actuator/health/readiness
             port: 8080
             scheme: HTTP
           timeoutSeconds: 30
