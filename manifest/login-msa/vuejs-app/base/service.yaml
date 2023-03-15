@@ -10,4 +10,4 @@ spec:
   selector:
     app: login-msa-vuejs-app
   type: LoadBalancer
-  loadBalancerIP: 192.168.29.24
+  loadBalancerIP: 192.168.29.21
