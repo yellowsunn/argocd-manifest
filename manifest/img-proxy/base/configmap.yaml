@@ -41,10 +41,9 @@ data:
     function rewritePath(r) {
       const width = r.args['width'] || 0
       const height = r.args['height'] || 0
-      const uri = r.uri.replace(/^\/board-service/gi, '/my-board-service')
 
-      const link = btoa(`s3:/${uri}`)
-      return `insecure/resize:fill:${width}:${height}/gravity:sm/${link}`
+      const s3Uri = btoa(`s3:/${r.uri}`)
+      return `insecure/resize:fill:${width}:${height}/gravity:sm/${s3Uri}`
     }
 
     export default { rewritePath };
