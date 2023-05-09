@@ -10,6 +10,10 @@ spec:
       - name: imgproxy
         image: darthsim/imgproxy:v3.16
         imagePullPolicy: IfNotPresent
+        resources:
+          limits:
+            cpu: 500m
+            memory: 512Mi
         ports:
         - containerPort: 8080
         env:
