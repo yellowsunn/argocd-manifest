@@ -1,0 +1,50 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: img-proxy-nginx-config
+data:
+  nginx.conf: |
+    user  nginx;
+    worker_processes  auto;
+
+    load_module /etc/nginx/modules/ngx_http_js_module.so;
+
+    error_log  /var/log/nginx/error.log notice;
+    pid        /var/run/nginx.pid;
+
+
+    events {
+        worker_connections  1024;
+    }
+
+
+    http {
+        js_set $new_path     image.rewritePath;
+        js_import /js/image.js;
+
+        server {
+            listen 80;
+
+            location / {
+                proxy_set_header Upgrade $http_upgrade;
+                proxy_set_header Connection 'upgrade';
+                proxy_set_header Host $host;
+                proxy_cache_bypass $http_upgrade;
+                proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+
+                proxy_pass http://localhost:8080;
+                rewrite ^/.*$ /$new_path break;
+            }
+        }
+    }
+  image.js: |
+    function rewritePath(r) {
+      const width = r.args['width'] || 0
+      const height = r.args['height'] || 0
+      const uri = r.uri.replace(/^\/board-service/gi, '/my-board-service')
+
+      const link = btoa(`s3:/${uri}`)
+      return `insecure/resize:fill:${width}:${height}/gravity:sm/${link}`
+    }
+
+    export default { rewritePath };

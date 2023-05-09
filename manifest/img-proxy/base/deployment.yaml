@@ -1,0 +1,49 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: img-proxy-deploy
+spec:
+  revisionHistoryLimit: 5
+  template:
+    spec:
+      containers:
+      - name: imgproxy
+        image: darthsim/imgproxy:v3.16
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 8080
+        env:
+        - name: IMGPROXY_S3_REGION
+          value: 'ap-northeast-2'
+        - name: IMGPROXY_USE_S3
+          value: 'true'
+        - name: IMGPROXY_ALLOW_ORIGIN
+          value: '*'
+        - name: AWS_ACCESS_KEY_ID
+          valueFrom:
+            secretKeyRef: 
+              name: aws-iam-secret
+              key: access_key_id
+        - name: AWS_SECRET_ACCESS_KEY
+          valueFrom:
+            secretKeyRef:
+              name: aws-iam-secret
+              key: secret_access_key
+      - name: imgproxy-nginx
+        image: nginx:1.23.4-alpine
+        ports:
+        - containerPort: 80
+        volumeMounts:
+        - name: nginx-config
+          mountPath: /etc/nginx/nginx.conf
+          readOnly: true
+          subPath: nginx.conf
+        - name: nginx-config
+          mountPath: /js/image.js
+          readOnly: true
+          subPath: image.js
+      volumes:
+      - name: nginx-config
+        configMap:
+          defaultMode: 0644
+          name: img-proxy-nginx-config
