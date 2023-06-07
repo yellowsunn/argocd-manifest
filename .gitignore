@@ -1,1 +1,2 @@
 kustomize
+manifest/img-proxy/base/secrets.yaml
