@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: simpleforum-redis-sts
+spec:
+  replicas: 1
+  serviceName: simpleforum-redis-svc
+  template:
+    spec:
+      containers:
+      - name: simpleforum-redis
+        image: redis:7.0-alpine
+        command: ["redis-server", "/usr/local/etc/redis/redis.conf"]
+        ports:
+        - containerPort: 6379
+        volumeMounts:
+        - name: mnt
+          mountPath: /usr/local/etc/redis/redis.conf
+          subPath: redis.conf
+      volumes:
+      - name: mnt
+        configMap:
+          name: simpleforum-redis-config
