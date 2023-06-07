@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: simpleforum-api-gateway-svc
+spec:
+  ports:
+  - port: 8080
+  selector:
+    app: simpleforum-api-gateway
+  type: LoadBalancer
