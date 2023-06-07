@@ -1,0 +1,9 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namePrefix: dev-
+
+images:
+- name: yellowsunn/simpleforum-image-service
+  newTag: SNAPSHOT-20230607011020
+resources:
+- ../../base

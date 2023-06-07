@@ -1,0 +1,18 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: simpleforum-image-service-deploy
+spec:
+  revisionHistoryLimit: 5
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+  template:
+    spec:
+      containers:
+      - name: simpleforum-image-service
+        image: yellowsunn/simpleforum-image-service
+        ports:
+        - containerPort: 8080
