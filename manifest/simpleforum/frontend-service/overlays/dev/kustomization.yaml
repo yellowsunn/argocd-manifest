@@ -4,6 +4,6 @@ namePrefix: dev-
 
 images:
 - name: yellowsunn/simpleforum-frontend-service
-  newTag: SNAPSHOT-20230608152459
+  newTag: SNAPSHOT-20230608153919
 resources:
 - ../../base
