@@ -1,0 +1,18 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: simpleforum-frontend-service-deploy
+spec:
+  revisionHistoryLimit: 5
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+  template:
+    spec:
+      containers:
+      - name: simpleforum-frontend-service
+        image: yellowsunn/simpleforum-frontend-service
+        ports:
+        - containerPort: 80
