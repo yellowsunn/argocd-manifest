@@ -17,19 +17,3 @@ spec:
         env:
         - name: ZOOKEEPER_CLIENT_PORT
           value: "2181"
-        readinessProbe:
-          exec:
-            command:
-            - sh
-            - -c
-            - "zookeeper-ready 2181"
-          initialDelaySeconds: 10
-          timeoutSeconds: 5
-        livenessProbe:
-          exec:
-            command:
-            - sh
-            - -c
-            - "zookeeper-ready 2181"
-          initialDelaySeconds: 10
-          timeoutSeconds: 5
