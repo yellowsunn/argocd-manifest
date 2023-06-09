@@ -21,7 +21,7 @@ spec:
             fieldRef:
               fieldPath: metadata.name
         - name: KAFKA_ZOOKEEPER_CONNECT
-          vaule: simpleforum-zookeeper-sts-0.simpleforum-zookeeper-svc:2181
+          value: simpleforum-zookeeper-sts-0.simpleforum-zookeeper-svc:2181
         - name: KAFKA_ADVERTISED_LISTENERS
           value: PLAINTEXT://$(MY_POD_NAME).simpleforum-kafka-svc:9092
         - name: KAFKA_LISTENER_SECURITY_PROTOCOL_MAP
