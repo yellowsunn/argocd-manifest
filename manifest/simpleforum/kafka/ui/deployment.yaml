@@ -17,11 +17,10 @@ spec:
         image: provectuslabs/kafka-ui
         ports:
         - containerPort: 8080
-      env:
-      - name: KAFKA_CLUSTERS_0_NAME
-        value: local
-      - name: KAFKA_CLUSTERS_0_ZOOKEEPER
-        value: simpleforum-zookeeper-sts-0.simpleforum-zookeeper-svc:2181
-      - name: KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS
-        value: simpleforum-kafka-sts-0.simpleforum-kafka-svc:9092, simpleforum-kafka-sts-1.simpleforum-kafka-svc:9092, simpleforum-kafka-sts-2.simpleforum-kafka-svc:9092
-        
+        env:
+        - name: KAFKA_CLUSTERS_0_NAME
+          value: local
+        - name: KAFKA_CLUSTERS_0_ZOOKEEPER
+          value: simpleforum-zookeeper-sts-0.simpleforum-zookeeper-svc:2181
+        - name: KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS
+          value: simpleforum-kafka-sts-0.simpleforum-kafka-svc:9092, simpleforum-kafka-sts-1.simpleforum-kafka-svc:9092, simpleforum-kafka-sts-2.simpleforum-kafka-svc:9092
