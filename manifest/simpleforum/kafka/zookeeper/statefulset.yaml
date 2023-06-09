@@ -17,3 +17,19 @@ spec:
         env:
         - name: ZOOKEEPER_CLIENT_PORT
           value: "2181"
+        livenessProbe:
+          exec:
+            command: ['/bin/bash', '-c', 'echo "ruok" | nc -w 2 localhost 2181 | grep imok']
+          initialDelaySeconds: 30
+          periodSeconds: 10
+          timeoutSeconds: 5
+          failureThreshold: 6
+          successThreshold: 1
+        readinessProbe:
+          exec:
+            command: ['/bin/bash', '-c', 'echo "ruok" | nc -w 2 localhost 2181 | grep imok']
+          initialDelaySeconds: 5
+          periodSeconds: 10
+          timeoutSeconds: 5
+          failureThreshold: 6
+          successThreshold: 1
