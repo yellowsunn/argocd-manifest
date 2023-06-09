@@ -9,7 +9,7 @@ spec:
     type: RollingUpdate
   template:
     spec:
-      terminationGracePeriodSeconds: 10
+      terminationGracePeriodSeconds: 60
       containers:
       - name: simpleforum-kafka
         image: confluentinc/cp-kafka:7.0.9
@@ -28,3 +28,11 @@ spec:
           value: PLAINTEXT:PLAINTEXT, PLAINTEXT_HOST:PLAINTEXT
         - name: KAFKA_INTER_BROKER_LISTENER_NAME
           value: PLAINTEXT
+        livenessProbe:
+          exec:
+            command: [ '/bin/bash', '-c', 'kafka-topics --bootstrap-server localhost:9092 --list' ]
+          initialDelaySeconds: 30
+          periodSeconds: 30
+          timeoutSeconds: 10
+          failureThreshold: 5
+          successThreshold: 1
