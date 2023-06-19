@@ -1,0 +1,17 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: simpleforum-board-batch-event-send-failure-retry
+spec:
+  schedule: "*/5 * * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+            - name: simpleforum-board-batch
+              image: yellowsunn/simpleforum-board-batch
+              imagePullPolicy: IfNotPresent
+              args:
+                - --job.name=eventSendFailureRetryJob
+          restartPolicy: OnFailure
