@@ -1,0 +1,9 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namePrefix: dev-
+
+images:
+- name: yellowsunn/simpleforum-board-batch
+  newTag: SNAPSHOT-20230619024642
+resources:
+- ../../base

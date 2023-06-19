@@ -1,0 +1,18 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: simpleforum-board-batch-view-count-sync
+spec:
+  schedule: "*/5 * * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+            - name: simpleforum-board-batch
+              image: yellowsunn/simpleforum-board-batch
+              imagePullPolicy: IfNotPresent
+              args:
+                - --job.name=viewCountSyncJob
+          restartPolicy: OnFailure
+
