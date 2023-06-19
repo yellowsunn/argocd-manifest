@@ -1,9 +1,9 @@
 apiVersion: batch/v1
 kind: CronJob
 metadata:
-  name: simpleforum-board-batch-view-count-sync
+  name: view-count-sync
 spec:
-  schedule: "*/5 * * * *"
+  schedule: "*/3 * * * *"
   jobTemplate:
     spec:
       template:

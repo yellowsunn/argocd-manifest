@@ -5,4 +5,4 @@ resources:
   - ./view-count-sync-cronjob.yaml
   - ./event-send-failure-retry-cronjob.yaml
 commonLabels:
-  app: simpleforum-board-batch-view-count-sync
+  app: simpleforum-board-batch
