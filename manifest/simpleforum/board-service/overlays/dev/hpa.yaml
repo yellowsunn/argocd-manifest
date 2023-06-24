@@ -1,0 +1,7 @@
+apiVersion: autoscaling/v1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: simpleforum-board-service-hpa
+spec:
+  maxReplicas: 3
+  minReplicas: 2
