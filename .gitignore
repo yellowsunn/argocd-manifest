@@ -1,2 +1,4 @@
 kustomize
 manifest/img-proxy/base/secrets.yaml
+.idea
+.DS_Store
