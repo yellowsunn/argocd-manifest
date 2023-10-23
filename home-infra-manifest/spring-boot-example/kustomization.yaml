@@ -7,4 +7,4 @@ resources:
 - hpa.yaml
 images:
 - name: harbor.yellowsunn.com:80/test/spring-boot-example
-  newTag: latest
+  newTag: "20231024003514"
