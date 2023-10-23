@@ -8,5 +8,3 @@ resources:
 images:
 - name: harbor.yellowsunn.com:80/test/spring-boot-example
   newTag: latest
-- name: spring-boot-example
-  newTag: "20231024002814"
