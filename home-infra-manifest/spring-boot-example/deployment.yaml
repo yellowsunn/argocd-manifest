@@ -51,5 +51,5 @@ spec:
               value: >-
                 -javaagent:/pinpoint-agent/pinpoint-bootstrap.jar
                 -Dpinpoint.applicationName=SPRING-BOOT-EXAMPLE
-                -Dpinpoint.agentId=springbootex
+                -Dpinpoint.agentId=springbootexample
                 -Dpinpoint.profiler.profiles.active=release
