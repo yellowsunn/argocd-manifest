@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: fluentd-config
+  namespace: kube-system
+  labels:
+    k8s-app: fluentd-logging
+data:
+  fluent.conf: |
+    <source>
+      @type http
+      port 24224
+      bind 0.0.0.0
+    </source>
+    
+    <match test.cycle>
+      @type stdout
+    </match>
