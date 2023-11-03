@@ -8,11 +8,19 @@ metadata:
 data:
   fluent.conf: |
     <source>
-      @type http
-      port 24224
-      bind 0.0.0.0
+      @type tail
+      path /var/log/logback/**/*.log
+      tag logback
+      multiline_flush_interval 1s
+      <parse>
+        @type multiline
+        format_firstline /^\[\w+\s*\]/
+        format1 /^\[(?<level>\w+)\s*\] \[(?<timestamp>.+)\] \[(?<service.name>.+)\] \[(?<profile>.+)\] \[(?<thread>.+)\] (?<class>.+) - (?<message>.*)/
+      </parse>
     </source>
     
-    <match test.cycle>
-      @type stdout
+    <match logback>
+      @type elasticsearch
+      host 10.10.10.27
+      port 9200
     </match>

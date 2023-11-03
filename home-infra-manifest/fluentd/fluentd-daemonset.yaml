@@ -26,8 +26,6 @@ spec:
           volumeMounts:
             - name: varlog
               mountPath: /var/log
-            - name: dockercontainerlogdirectory
-              mountPath: /var/log/pods
               readOnly: true
             - name: config-volume
               mountPath: /fluentd/etc
@@ -36,10 +34,6 @@ spec:
         - name: varlog
           hostPath:
             path: /var/log
-        - name: dockercontainerlogdirectory
-          hostPath:
-            path: /var/log/pods
         - name: config-volume
           configMap:
             name: fluentd-config
-
