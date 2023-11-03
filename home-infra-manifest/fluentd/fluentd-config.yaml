@@ -15,7 +15,7 @@ data:
       <parse>
         @type multiline
         format_firstline /^\[\w+\s*\]/
-        format1 /^\[(?<level>\w+)\s*\] \[(?<timestamp>.+)\] \[(?<service.name>.+)\] \[(?<profile>.+)\] \[(?<thread>.+)\] (?<class>.+) - (?<message>.*)/
+        format1 /^\[(?<log.level>\w+)\s*\] \[(?<log.timestamp>.+)\] \[(?<service.name>.+)\] \[(?<service.profile>.+)\] \[(?<service.thread>.+)\] (?<log.logger>.+) - (?<message>.*)/
       </parse>
     </source>
     
@@ -23,4 +23,10 @@ data:
       @type elasticsearch
       host 10.10.10.27
       port 9200
+      <buffer>
+        @type memory
+        timekey 3s
+        timekey_wait 0s
+        flush_interval 3s
+      </buffer>
     </match>
