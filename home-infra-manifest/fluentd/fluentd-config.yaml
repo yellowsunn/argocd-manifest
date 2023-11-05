@@ -15,7 +15,7 @@ data:
       <parse>
         @type multiline
         format_firstline /^\[\w+\s*\]/
-        format1 /^\[(?<log.level>\w+)\s*\] \[(?<log.timestamp>.+)\] \[(?<service.name>.+)\] \[(?<service.profile>.+)\] \[(?<service.thread>.+)\] (?<log.logger>.+) - (?<message>.*)/
+        format1 /^\[(?<log.level>\w+)\s*\] \[(?<@timestamp>.+)\] \[(?<service.name>.+)\] \[(?<service.profile>.+)\] \[(?<service.thread>.+)\] (?<log.logger>.+) - (?<message>.*)/
       </parse>
     </source>
     
@@ -29,8 +29,4 @@ data:
         timekey_wait 0s
         flush_interval 3s
       </buffer>
-      <inject>
-        time_key @timestamp
-        time_format %Y-%m-%dT%H:%M:%SZ
-      </inject>
     </match>
