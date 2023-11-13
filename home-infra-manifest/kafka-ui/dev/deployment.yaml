@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kafka-ui
+spec:
+  template:
+    metadata:
+      name: kafka-ui
+    spec:
+      containers:
+        - name: kafka-ui
+          env:
+            - name: DYNAMIC_CONFIG_ENABLED
+              value: 'true'
+            - name: KAFKA_CLUSTERS_0_NAME
+              value: dev-kafka
+            - name: KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS
+              value: 10.10.10.31:9092
+            - name: KAFKA_CLUSTERS_0_ZOOKEEPER
+              value: 10.10.10.31:2181
