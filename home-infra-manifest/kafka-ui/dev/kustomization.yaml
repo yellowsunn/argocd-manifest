@@ -1,0 +1,13 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namePrefix: dev-
+commonLabels:
+  app: kafka-ui
+resources:
+  - ../base
+patches:
+  - path: deployment.yaml
+    target:
+      group: apps
+      version: v1
+      kind: Deployment
