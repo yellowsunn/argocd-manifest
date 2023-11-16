@@ -15,4 +15,4 @@ spec:
         name: cpu
         target:
           type: Utilization
-          averageUtilization: 6 # 평균 CPU 사용량이 50% 이상인 경우 Scale out
+          averageUtilization: 50 # 평균 CPU 사용량이 50% 이상인 경우 Scale out
