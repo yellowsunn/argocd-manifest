@@ -3,7 +3,6 @@ kind: Deployment
 metadata:
   name: spring-boot-example-deploy
 spec:
-  replicas: 2
   revisionHistoryLimit: 5
   selector:
     matchLabels:
