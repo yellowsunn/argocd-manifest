@@ -38,9 +38,9 @@ spec:
           startupProbe:
             httpGet:
               scheme: HTTP
-              path: /actuator/health
+              path: /graphiql?path=/graphql
               port: 8080
-            initialDelaySeconds: 30
+            initialDelaySeconds: 40
             periodSeconds: 20
           livenessProbe:
             httpGet:
