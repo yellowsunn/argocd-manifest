@@ -16,9 +16,3 @@ spec:
         target:
           type: Utilization
           averageUtilization: 50 # 평균 CPU 사용량이 50% 이상인 경우 Scale out
-    - type: Resource
-      resource:
-        name: memory
-        target:
-          type: Utilization
-          averageUtilization: 80 # 평균 메모리 사용량이 80% 이상인 경우 Scale out
