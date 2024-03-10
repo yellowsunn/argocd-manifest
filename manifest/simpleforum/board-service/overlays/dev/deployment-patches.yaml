@@ -1,0 +1,17 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: simpleforum-board-service-deploy
+
+spec:
+  template:
+    spec:
+      containers:
+      - name: simpleforum-board-service
+        env:
+        - name: JAVA_TOOL_OPTIONS
+          value: >-
+            -javaagent:/pinpoint-agent/pinpoint-bootstrap.jar
+            -Dpinpoint.applicationName=DEV_SIMPLE_BOARD
+            -Dpinpoint.agentId=devsimpleboard
+            -Dpinpoint.profiler.profiles.active=release
