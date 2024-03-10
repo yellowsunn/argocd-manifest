@@ -4,6 +4,6 @@ namePrefix: dev-
 
 images:
 - name: yellowsunn/simpleforum-notification-consumer
-  newTag: SNAPSHOT-20240310142126
+  newTag: SNAPSHOT-20240310142608
 resources:
 - ../../base
