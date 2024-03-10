@@ -1,0 +1,17 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: simpleforum-notification-service-deploy
+
+spec:
+  template:
+    spec:
+      containers:
+      - name: simpleforum-notification-service
+        env:
+        - name: JAVA_TOOL_OPTIONS
+          value: >-
+            -javaagent:/pinpoint-agent/pinpoint-bootstrap.jar
+            -Dpinpoint.applicationName=DEV_SIMPLE_NOTIFICATION
+            -Dpinpoint.agentId=devsimplenotify
+            -Dpinpoint.profiler.profiles.active=release
