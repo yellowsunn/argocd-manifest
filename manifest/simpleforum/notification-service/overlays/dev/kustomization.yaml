@@ -6,6 +6,6 @@ patchesStrategicMerge:
 
 images:
 - name: yellowsunn/simpleforum-notification-service
-  newTag: SNAPSHOT-20240310190011
+  newTag: SNAPSHOT-20240310230013
 resources:
 - ../../base
