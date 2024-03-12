@@ -15,3 +15,10 @@ spec:
             -Dpinpoint.applicationName=DEV_SIMPLE_BOARD
             -Dpinpoint.agentId=devsimpleboard
             -Dpinpoint.profiler.profiles.active=release
+        volumeMounts:
+        - mountPath: /logs
+          name: logback
+      volumes:
+      - name: logback
+        hostPath:
+          path: /var/log/logback/dev/simpleboard/board-service
