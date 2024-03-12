@@ -1,0 +1,17 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: simpleforum-image-service-deploy
+
+spec:
+  template:
+    spec:
+      containers:
+      - name: simpleforum-image-service
+        env:
+        - name: JAVA_TOOL_OPTIONS
+          value: >-
+            -javaagent:/pinpoint-agent/pinpoint-bootstrap.jar
+            -Dpinpoint.applicationName=DEV_SIMPLE_IMAGE
+            -Dpinpoint.agentId=devsimpleimage
+            -Dpinpoint.profiler.profiles.active=release
