@@ -7,7 +7,7 @@ spec:
   template:
     metadata:
       labels:
-        app: simpleboard-user-service
+        app: simpleforum-user-service
       annotations:
         prometheus.io/scrape: "true"
         prometheus.io/port: "8080"
